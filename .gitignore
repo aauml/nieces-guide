@@ -1,0 +1,7 @@
+# Ignore all files by default
+*
+
+# Allow only the guide and configuration files
+!index.html
+!nieces-money-options.html
+!.gitignore

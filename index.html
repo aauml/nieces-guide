@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía práctica y sencilla sobre opciones de ahorro, inversión y distribución de capital para Andrea y Valeria de Chepitas LLC.">
+    <title>Guía de Opciones Financieras — Andrea y Valeria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e1b4b; /* Deep Indigo */
+            --primary-light: #312e81;
+            --accent: #d97706; /* Warm Amber */
+            --accent-light: #fef3c7;
+            --success: #059669; /* Soft Emerald */
+            --success-light: #d1fae5;
+            --danger: #dc2626; /* Crimson */
+            --danger-light: #fee2e2;
+            --background: #f8fafc; /* Slate Light */
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            font-size: 11pt;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            padding: 45px 30px;
+            border-radius: var(--radius-lg);
+            color: white;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 80%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26pt;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p.subtitle {
+            font-size: 12pt;
+            color: #cbd5e1;
+            font-weight: 400;
+        }
+
+        .intro-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18pt;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13pt;
+            color: var(--primary-light);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .company-info {
+            background-color: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .company-info ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .company-info li {
+            margin-bottom: 8px;
+        }
+
+        /* 2-Step Plan Visual styling */
+        .timeline {
+            display: flex;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                flex-direction: column;
+            }
+        }
+
+        .timeline-step {
+            flex: 1;
+            background-color: #f1f5f9;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border-left: 5px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
+        }
+
+        .timeline-step:hover {
+            transform: translateY(-2px);
+        }
+
+        .timeline-step.step-one {
+            border-left-color: var(--success);
+        }
+
+        .step-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .step-one .step-badge {
+            background-color: var(--success-light);
+            color: var(--success);
+        }
+
+        .step-two .step-badge {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .step-amount {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22pt;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* Grid layout for cards */
+        .grid-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .option-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 14pt;
+        }
+
+        .option-badge {
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .option-badge.usa {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .option-badge.mexico {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .option-badge.alt {
+            background-color: #fae8ff;
+            color: #86198f;
+        }
+
+        .option-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .option-desc {
+            font-size: 10.5pt;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+        }
+
+        .option-details {
+            background-color: #f8fafc;
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            font-size: 10pt;
+            margin-bottom: 16px;
+        }
+
+        .option-details p {
+            margin-bottom: 6px;
+        }
+
+        .option-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: auto;
+        }
+
+        .pros-cons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 9.5pt;
+        }
+
+        .pro-item {
+            color: var(--success);
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        .con-item {
+            color: #b91c1c;
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        /* Table design */
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 40px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .pagina {
+            margin-bottom: 40px;
+        }
+
+        .decision-form {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            header {
+                padding: 30px 16px;
+                border-radius: var(--radius-md);
+                margin-bottom: 24px;
+            }
+
+            header h1 {
+                font-size: 20pt;
+            }
+
+            header p.subtitle {
+                font-size: 10.5pt;
+            }
+
+            .intro-card {
+                padding: 20px 16px;
+                margin-bottom: 24px;
+            }
+
+            h2 {
+                font-size: 15pt;
+                gap: 8px;
+            }
+
+            h3 {
+                font-size: 11pt;
+            }
+
+            .timeline-step {
+                padding: 16px;
+            }
+
+            .option-card {
+                padding: 20px 16px;
+            }
+
+            .decision-form {
+                padding: 16px;
+            }
+
+            td, th {
+                padding: 12px 10px;
+                font-size: 9pt;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER DE LA GUÍA -->
+    <header id="header-guide">
+        <h1>Guía de Opciones Financieras</h1>
+        <p class="subtitle">Andrea y Valeria — Sugerencias prácticas sobre su capital en Chepitas LLC</p>
+    </header>
+
+    <!-- CONSTITUCIÓN DE LA EMPRESA Y DETALLES DE INVERSIÓN -->
+    <section class="intro-card" id="company-structure">
+        <h2>🏢 Constitución de la empresa y su dinero</h2>
+        <div class="company-info">
+            <p><strong>¿Cómo está constituida la empresa?</strong></p>
+            <p>Chepitas LLC es una sociedad estadounidense registrada en Nuevo México. Andrea Paola y Valeria Sofía son dueñas por partes iguales (50% de las acciones cada una) y Arturo Ayala funge como Administrador (Manager).</p>
+            
+            <p style="margin-top: 15px;"><strong>¿Dónde está el dinero y cómo está invertido hoy?</strong></p>
+            <ul>
+                <li><strong>Ubicación:</strong> Todo el capital de la empresa está depositado en una cuenta de inversión en Estados Unidos a nombre de la sociedad en la plataforma <strong>Trade-PMR</strong>, bajo la custodia física del banco <strong>Wells Fargo</strong>.</li>
+                <li><strong>Inversión actual:</strong> El portafolio es manejado por el asesor Nathan Brown. El capital está invertido de forma diversificada en canastas de acciones de grandes empresas americanas (ETFs) y bonos gubernamentales para proteger el dinero.</li>
+            </ul>
+        </div>
+
+        <h2>📊 Plan para disolver la empresa y transferir el capital (En 2 Pasos)</h2>
+        <p>La empresa se va a disolver definitivamente, por lo que todo el capital debe ser transferido fuera de la sociedad. Para liquidar ordenadamente las deudas e impuestos de cierre ante el gobierno de EE.UU. sin problemas fiscales, el dinero se entregará en dos momentos:</p>
+        
+        <div class="timeline">
+            <!-- PASO 1 -->
+            <div class="timeline-step step-one" id="step-initial">
+                <span class="step-badge">Paso 1 — De inmediato</span>
+                <p style="font-size: 10pt; font-weight: 600; color: var(--text-muted);">Agosto 2026</p>
+                <div class="step-amount">$60,000 USD</div>
+                <p style="font-size: 10.5pt;"><strong>Para cada una.</strong> Esta es la suma principal. Las opciones descritas abajo no son obligatorias, son solo sugerencias o ideas comunes de lo que pueden hacer. Ustedes tienen total libertad y deciden libremente qué hacer con su parte.</p>
+            </div>
+            
+            <!-- PASO 2 -->
+            <div class="timeline-step step-two" id="step-reserve">
+                <span class="step-badge">Paso 2 — Cierre Fiscal</span>
+                <p style="font-size: 10pt; font-weight: 600; color: var(--text-muted);">En 6 a 12 meses (2027)</p>
+                <div class="step-amount">El Remanente</div>
+                <p style="font-size: 10.5pt;">Se guardará una reserva de la empresa para cubrir impuestos y multas del cierre fiscal ante el IRS (Hacienda americana). Al recibir la notificación de cierre oficial del IRS, el dinero sobrante de esa reserva se les repartirá 50/50.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAS 6 OPCIONES DE INVERSIÓN / AHORRO -->
+    <section class="pagina" id="six-options">
+        <h2>💡 6 Sugerencias comunes para tus $60,000 USD</h2>
+        <p style="color: var(--text-muted); margin-bottom: 25px;">Estas opciones <strong>no son obligatorias</strong>. Son sugerencias e ideas de lo que pueden hacer con su dinero al transferirse fuera de la empresa. Tienen total libertad para decidir cómo manejar su capital, lo que incluye incluso retirar el dinero físicamente en efectivo si así lo desean para llevarlo a México:</p>
+        
+        <div class="grid-options">
+            
+            <!-- OPCIÓN A -->
+            <div class="option-card" id="card-option-a">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">A</div>
+                        <span class="option-badge usa">Inversión EE.UU.</span>
+                    </div>
+                    <div class="option-title">Dejarlo invertido en EE.UU. (Trade-PMR)</div>
+                    <p class="option-desc">El dinero se queda en tu propia cuenta en la casa de bolsa actual en EE.UU., manejado por el asesor financiero Nathan Brown. Estará invertido en canastas de acciones de grandes empresas americanas.</p>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento estimado:</strong> Rinde en promedio un <strong>6% anual</strong>.</p>
+                        <p><strong>Impuestos:</strong> En EE.UU. se retiene solo el <strong>10%</strong> de las ganancias gracias al tratado fiscal (con tu ITIN).</p>
+                        <p><strong>Costo anual estimado:</strong> ~$800 USD. Se compone de:</p>
+                        <ul style="margin-left: 15px; margin-top: 5px; font-size: 9.5pt; color: var(--text-muted); list-style-type: disc;">
+                            <li><strong>Comisión del asesor:</strong> ~0.64% anual (~$384 USD sobre $60k). Es <strong>prorrateada</strong> (se calcula sobre el saldo diario de la cuenta y se descuenta trimestralmente de manera automática).</li>
+                            <li><strong>Gastos fijos:</strong> Declaración fiscal en EE.UU. (~$250 USD) y buzón postal compartido (~$53 USD). Contabilidad en México (~$120 USD) solo si decides declararlo en México.</li>
+                        </ul>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Tu dinero crece en dólares directamente.</div>
+                        <div class="con-item">✗ Requiere declarar impuestos en EE.UU. cada año (solo en México si decides declararlo en México).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN B -->
+            <div class="option-card" id="card-option-b">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">B</div>
+                        <span class="option-badge usa">Ahorro EE.UU.</span>
+                    </div>
+                    <div class="option-title">Cuenta de Ahorros Segura en EE.UU.</div>
+                    <p class="option-desc">Mover el dinero a una cuenta de ahorros tradicional en un banco de EE.UU. (como Wells Fargo o Chase). El capital no se mueve con el mercado; se queda fijo y seguro generando intereses estables.</p>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento estimado:</strong> Interés fijo seguro (~3.5% a 4% al año).</p>
+                        <p><strong>Costo anual estimado:</strong> ~$170 USD. Se compone de:</p>
+                        <ul style="margin-left: 15px; margin-top: 5px; font-size: 9.5pt; color: var(--text-muted); list-style-type: disc;">
+                            <li><strong>Gastos fijos:</strong> Buzón postal virtual (~$53 USD) y contabilidad en México (~$120 USD) si decides declararlo.</li>
+                            <li><strong>Sin comisiones de asesor</strong> (al ser una cuenta bancaria de ahorro propia).</li>
+                        </ul>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Cero riesgo de pérdida y garantizado por el gobierno de EE.UU.</div>
+                        <div class="con-item">✗ Podría requerir ir en persona a una sucursal en EE.UU. a abrirla.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN C -->
+            <div class="option-card" id="card-option-c">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">C</div>
+                        <span class="option-badge mexico">Llevarlo a México</span>
+                    </div>
+                    <div class="option-title">Cuenta de cheques o inversión básica en México</div>
+                    <p class="option-desc">Transferir el dinero directamente a un banco en México. Tienen dos alternativas principales:</p>
+                    <ul style="margin-left: 20px; font-size: 10pt; color: var(--text-muted); margin-bottom: 12px;">
+                        <li><strong>En dólares:</strong> Guardarlo en una cuenta de cheques en dólares (ej. BBVA o Banorte). Normalmente pagan **0% de interés** (sirve solo para conservar la divisa y suele requerir comprobar domicilio en frontera norte o actividad comercial).</li>
+                        <li><strong>En pesos (Cheques o CETES):</strong> Cambiarlo a pesos. Las cuentas de ahorro tradicionales pagan casi nada (**0% a 2%**), pero invertir en **CETES** (bonos del gobierno) da hoy entre **6.4% y 7.2% anual** según el plazo elegido.</li>
+                    </ul>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento estimado:</strong> **0%** en cuentas de dólares bancarias; de **6.4% a 7.2% anual** en pesos si inviertes en CETES.</p>
+                        <p><strong>Impuestos en México:</strong> Si decides llevarlo y declararlo en México, deberás pagar el resto de los impuestos mexicanos según el porcentaje que designe la **SHCP** (Hacienda de México), restando el 10% del tratado que ya te retuvieron en EE.UU.</p>
+                        <p><strong>Costo anual estimado:</strong> Casi nulo (solo las comisiones normales del banco mexicano si aplican).</p>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Máxima simplicidad, cero trámites y cero declaraciones en EE.UU.</div>
+                        <div class="con-item">✗ Si se mantiene en pesos, el dinero se expone a devaluaciones.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN D -->
+            <div class="option-card" id="card-option-d">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">D</div>
+                        <span class="option-badge mexico">Uso Inmediato</span>
+                    </div>
+                    <div class="option-title">Usar el dinero ahora (Salida total)</div>
+                    <p class="option-desc">Recibir el dinero en México y gastarlo de inmediato en un proyecto importante: una maestría o posgrado, el enganche de una casa o departamento, o capital inicial para tu propio negocio.</p>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento esperado:</strong> Depende del valor de tu proyecto personal.</p>
+                        <p><strong>Costo anual estimado:</strong> $0.</p>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Aprovechas la oportunidad de invertir en ti misma o tu patrimonio hoy.</div>
+                        <div class="con-item">✗ Te quedas sin fondo de emergencia o crecimiento compuesto futuro.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN E -->
+            <div class="option-card" id="card-option-e">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">E</div>
+                        <span class="option-badge alt">Inversión Digital</span>
+                    </div>
+                    <div class="option-title">Inversión por tu cuenta (Apps / Broker Online)</div>
+                    <p class="option-desc">Manejar tu propio dinero abriendo una cuenta personal en plataformas digitales de inversión autorizadas en México o EE.UU. (como GBM+, Bursanet, o Interactive Brokers) para comprar acciones, Fibras o ETFs por tu cuenta.</p>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento estimado:</strong> Variable, depende de lo que decidas comprar.</p>
+                        <p><strong>Costo anual estimado:</strong> Comisiones muy bajas cobradas por la app (sin costos fijos).</p>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Flexibilidad total para elegir tus inversiones desde el celular.</div>
+                        <div class="con-item">✗ Requiere que estudies y tomes tus propias decisiones financieras.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN F -->
+            <div class="option-card" id="card-option-f">
+                <div>
+                    <div class="option-header">
+                        <div class="option-letter">F</div>
+                        <span class="option-badge alt">Alternativos</span>
+                    </div>
+                    <div class="option-title">Otras inversiones comunes (Oro, Cripto, etc.)</div>
+                    <p class="option-desc">Utilizar el dinero para comprar activos alternativos bien conocidos. Ejemplos:</p>
+                    <ul style="margin-left: 20px; font-size: 10pt; color: var(--text-muted); margin-bottom: 12px;">
+                        <li><strong>Criptomonedas (Bitcoin, Ethereum):</strong> Altamente digital, especulativo y volátil.</li>
+                        <li><strong>Metales preciosos:</strong> Comprar oro o plata físicos (centenarios) o a través de fondos financieros para protegerse contra crisis.</li>
+                        <li><strong>Bienes Raíces (a escala pequeña):</strong> Copropiedad inmobiliaria digital (crowdfunding).</li>
+                    </ul>
+                </div>
+                <div class="option-footer">
+                    <div class="option-details">
+                        <p><strong>Rendimiento esperado:</strong> Impredecible (potencialmente muy alto o pérdidas severas).</p>
+                        <p><strong>Costo anual estimado:</strong> Variable según el tipo de compra/almacenamiento.</p>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pro-item">✓ Excelente protección contra inflación (oro) o gran potencial de subida (cripto).</div>
+                        <div class="con-item">✗ Riesgo extremo y alta volatilidad. No recomendado para todo tu dinero.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TODO SOBRE EL ITIN -->
+    <section class="pagina" id="itin-info">
+        <h2>🔑 Todo sobre el ITIN (Tu RFC en EE.UU.)</h2>
+        <div class="intro-card" style="margin-bottom: 0;">
+            <p style="margin-bottom: 15px;">El <strong>ITIN</strong> (Número de Identificación Fiscal para Extranjeros) es el número que el gobierno estadounidense asigna a personas que no viven en EE.UU. pero tienen inversiones o cuentas bancarias allá. Funciona de manera similar a tu RFC en México.</p>
+            
+            <div class="grid-options" style="gap: 20px; margin-bottom: 0;">
+                <div class="decision-form" style="background-color: #f0f9ff; border-color: #bee3f8;">
+                    <h3 style="color: #2b6cb0; margin-top: 0;">🌟 Beneficios (¿Para qué sirve y serviría?)</h3>
+                    <ul style="margin-left: 20px; font-size: 10pt; color: #2d3748;">
+                        <li style="margin-bottom: 8px;"><strong>Tratado fiscal del 10%:</strong> Evita que el gobierno de EE.UU. te retenga el 30% de tus ganancias. Con el ITIN, la retención baja a solo el **10%**.</li>
+                        <li style="margin-bottom: 8px;"><strong>Cuentas bancarias:</strong> Te permite abrir cuentas de ahorro o cheques en dólares en bancos estadounidenses.</li>
+                        <li style="margin-bottom: 8px;"><strong>Historial Crediticio:</strong> Sirve para empezar a construir historial de crédito en EE.UU. (útil si en el futuro quieres pedir tarjetas, comprar un auto o una casa allá).</li>
+                        <li style="margin-bottom: 8px;"><strong>Inversión directa:</strong> Te habilita para comprar bonos directamente del Tesoro americano.</li>
+                    </ul>
+                </div>
+                
+                <div class="decision-form" style="background-color: #fffaf0; border-color: #fbd38d;">
+                    <h3 style="color: #dd6b20; margin-top: 0;">📝 Responsabilidades y Vencimiento</h3>
+                    <ul style="margin-left: 20px; font-size: 10pt; color: #2d3748;">
+                        <li style="margin-bottom: 8px;"><strong>Declaración de impuestos:</strong> Si dejas dinero invertido en EE.UU. (Opción A), tu única responsabilidad es presentar una declaración de impuestos en EE.UU. cada año sobre las ganancias de esa cuenta.</li>
+                        <li style="margin-bottom: 8px;"><strong>Vencimiento automático:</strong> Si no utilizas tu ITIN durante 3 años seguidos, este se vencerá solo. **No hay multas, deudas acumuladas ni penalizaciones** de ningún tipo por dejarlo vencer. Si lo necesitas en el futuro, se puede volver a tramitar.</li>
+                        <li style="margin-bottom: 8px;"><strong>Lo que NO es:</strong> No es un permiso de trabajo, no es un Seguro Social y no afecta en absoluto tu estatus migratorio ni tu visa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FORMULARIOS K -->
+    <section class="pagina" id="k-forms-info">
+        <h2>📄 Los Formularios "K" (Schedule K-1 y Schedule K-3)</h2>
+        <div class="intro-card" style="margin-bottom: 0;">
+            <p style="margin-bottom: 15px;">Además de su dinero, Arturo les entregará unos documentos oficiales de la empresa llamados <strong>Formularios K (Schedule K-1 y Schedule K-3)</strong>. Estos documentos son preparados por el contador fiscal de la empresa en EE.UU. al final de cada año. Funciona de manera similar a una constancia de retención de impuestos en México.</p>
+            
+            <div class="grid-options" style="gap: 20px; margin-bottom: 0;">
+                <div class="decision-form" style="background-color: #f8fafc;">
+                    <h3 style="color: var(--primary); margin-top: 0; display: flex; align-items: center; gap: 8px;">📋 Schedule K-1 (Reporte de Socias)</h3>
+                    <p style="font-size: 10pt; color: var(--text-dark); margin-bottom: 12px;"><strong>¿Qué es?</strong> Es el formulario que detalla la parte proporcional de las ganancias, pérdidas o gastos que le corresponde a cada socia.</p>
+                    <p style="font-size: 10pt; color: var(--text-dark);"><strong>¿Para qué sirve?</strong> Como ustedes son dueñas del 50% de la sociedad, este formato demuestra ante las autoridades fiscales exactamente cuánto dinero ganaron y qué gastos de la empresa se descontaron para calcular la utilidad neta.</p>
+                </div>
+                
+                <div class="decision-form" style="background-color: #f8fafc;">
+                    <h3 style="color: var(--primary); margin-top: 0; display: flex; align-items: center; gap: 8px;">🌐 Schedule K-3 (Reporte Internacional)</h3>
+                    <p style="font-size: 10pt; color: var(--text-dark); margin-bottom: 12px;"><strong>¿Qué es?</strong> Es un anexo obligatorio (introducido en 2021) enfocado en operaciones internacionales de socios extranjeros.</p>
+                    <p style="font-size: 10pt; color: var(--text-dark);"><strong>¿Para qué sirve?</strong> Detalla los impuestos retenidos en EE.UU. (el 10% del tratado fiscal). Sirve como comprobante oficial para que el SAT en México reconozca ese impuesto ya pagado en EE.UU., evitando la doble tributación.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background-color: #ecfdf5; border-left: 4px solid var(--success); border-radius: var(--radius-sm); font-size: 10pt;">
+                <p><strong>💡 ¿Qué deben hacer con ellos?</strong></p>
+                <p style="margin-top: 5px; color: var(--text-dark);">Deben guardarlos. Si eligen la <strong>Opción A</strong>, su contador en EE.UU. usará estos formatos para hacer su declaración anual en EE.UU. (usando su ITIN). Si deciden declarar los ingresos en México, su contador mexicano los usará como comprobante de los impuestos federales americanos ya retenidos y acreditables.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUMEN COMPARATIVO RÁPIDO -->
+    <section class="pagina" id="comparison-table">
+        <h2>📊 Comparativa Rápida</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opción</th>
+                        <th>¿Dónde está el dinero?</th>
+                        <th>Riesgo / Seguridad</th>
+                        <th>Trámites Anuales</th>
+                        <th>Ideal para...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>A - Inversión EE.UU.</strong></td>
+                        <td>Broker Trade-PMR (Nathan)</td>
+                        <td>Moderado (se mueve con el mercado)</td>
+                        <td>Declarar en EE.UU. (en México solo si decides declararlo en México)</td>
+                        <td>Quien quiere crecer su dinero en dólares a 5+ años.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B - Ahorro EE.UU.</strong></td>
+                        <td>Banco Americano (Wells/Chase)</td>
+                        <td>Mínimo (garantizado por el gobierno)</td>
+                        <td>Pocos (declarar en EE.UU.; en México solo si decides declararlo en México)</td>
+                        <td>Quien quiere dólares seguros sin riesgo de mercado.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C - Llevarlo a México</strong></td>
+                        <td>Banco Mexicano (BBVA/CETES)</td>
+                        <td>Bajo (pero expuesto a tipo de cambio)</td>
+                        <td>Mínimos (se declara solo en México)</td>
+                        <td>La opción más sencilla, práctica y local.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D - Usar el dinero ya</strong></td>
+                        <td>Gastado en tu proyecto</td>
+                        <td>Ninguno (ya se convirtió en educación/bienes)</td>
+                        <td>Ninguno</td>
+                        <td>Quien tiene un plan claro para aplicarlo hoy.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E - Broker Digital / Apps</strong></td>
+                        <td>App de bolsa (GBM/Interactive)</td>
+                        <td>Variable (según elijas)</td>
+                        <td>Pocos (solo declarar en México)</td>
+                        <td>Quien quiere invertir por sí misma en bolsa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>F - Oro / Bitcoins</strong></td>
+                        <td>Monedero digital / Caja fuerte</td>
+                        <td>Extremo / Volátil</td>
+                        <td>Pocos o ninguno</td>
+                        <td>Quien busca especular o resguardar una pequeña porción.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
